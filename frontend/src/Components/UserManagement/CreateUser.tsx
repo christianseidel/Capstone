@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import React, {FormEvent, useEffect, useState} from "react";
 import {useAuth} from "./AuthProvider";
-import icon_eyes from "../../Media/Images/eyes.png";
+import icon_eyes from "../../../../../../../Ukulele/SongBook/frontend/src/components/media/images/eyes.png";
 import {useTranslation} from "react-i18next";
 import deFlag from "../../Media/Images/de.png";
 import enFlag from "../../Media/Images/en.png";
@@ -61,6 +61,7 @@ function CreateUser() {
         clearForm();
         nav('/users/login');
     }
+
     function setLanguage() {
         if (localStorage.getItem('i18nextLng') === 'en') {
             i18n.changeLanguage('de');
@@ -114,4 +115,4 @@ function CreateUser() {
     )
 }
 
-export default CreateUser;
+export default CreateUser

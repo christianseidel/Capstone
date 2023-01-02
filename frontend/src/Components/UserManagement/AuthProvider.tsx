@@ -32,7 +32,7 @@ export default function AuthProvider({children}: Param) {
                 passwordAgain: passwordAgain
             })
         })
-    };
+    }
 
     const login = (username: string, password: string) => {
         return fetch(`${process.env.REACT_APP_BASE_URL}/api/login`, {
@@ -48,13 +48,15 @@ export default function AuthProvider({children}: Param) {
             .then(response => {
                 if (response.status === 401 || response.status === 403) {
                     throw Error ('Benutzername oder Passwort ist nicht korrekt');
+                } else if (response.status !== 200) {
+                    throw Error (response.statusText + '(error code: ' + response.status + ').')
                 }
                 return response.json();
             })
             .then((token: Token) => setToken(token.token))
             .then(() => localStorage.setItem('jwt', token))
             .then(() => localStorage.setItem('username', username))
-    };
+    }
 
     const logout = () => {
         setToken('');
