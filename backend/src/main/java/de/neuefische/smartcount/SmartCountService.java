@@ -42,7 +42,7 @@ public class SmartCountService {
     public void deleteExpense(String id, String user) {
         var item = expensesRepository.findByIdAndUser(id, user);
         if (item.isEmpty()) {
-            throw new RuntimeException("An expense with Id no. " + id + " could not be found.");  // maybe rethink runtime exception !!??
+            throw new RuntimeException("An expense with Id no. " + id + " could not be found.");
         } else {
             expensesRepository.deleteById(id);
         }
